@@ -61,6 +61,7 @@ export default function Home() {
       const { removeBackground } = await import("@imgly/background-removal");
 
       const blob = await removeBackground(file, {
+        publicPath: window.location.origin + "/imgly/",
         progress: (key: string, current: number, total: number) => {
           if (total > 0) {
             const pct = Math.min((current / total) * 100, 99);

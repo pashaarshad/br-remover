@@ -1,16 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  reactCompiler: true,
-  webpack: (config) => {
-    // Allow importing ONNX model files
-    config.module.rules.push({
-      test: /\.onnx$/,
-      type: "asset/resource",
-    });
-    return config;
-  },
-  // Allow cross-origin resources for WASM/ONNX model loading
+  // Configured for Next.js 15+/Turbopack compatibility
+  // We are serving ONNX/WASM assets from public/imgly to avoid webpack loader issues
   async headers() {
     return [
       {
