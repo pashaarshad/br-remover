@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BG Remover — AI Background Removal Tool
+
+A stunning, client-side background removal tool built with Next.js and WebAssembly.
+
+## Features
+
+- **100% Client-Side**: Runs entirely in your browser using `@imgly/background-removal`. No images are uploaded to any server.
+- **Privacy Focused**: Your photos stay on your device.
+- **Modern UI**: Dark mode, glassmorphism design, and smooth animations.
+- **Interactive Comparison**: Slide to compare original vs. processed image.
+- **Fast & Free**: No API keys or credits required.
 
 ## Getting Started
 
-First, run the development server:
+1.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2.  **Prepare Assets**:
+    The AI models and WebAssembly files need to be in the `public/imgly` directory. If they are missing, copy them:
+    ```bash
+    # Windows (PowerShell)
+    New-Item -ItemType Directory -Force -Path public\imgly
+    Copy-Item -Path "node_modules\@imgly\background-removal\dist\*" -Destination "public\imgly" -Recurse
+    ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3.  **Run the development server**:
+    ```bash
+    npm run dev
+    ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4.  **Open the app**:
+    Visit [http://localhost:3000](http://localhost:3000) (or the port shown in your terminal).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Tech Stack
 
-## Learn More
+- **Framework**: Next.js 15+ (App Router)
+- **Styling**: Tailwind CSS v4
+- **AI/ML**: @imgly/background-removal (WASM/ONNX)
+- **Language**: TypeScript
 
-To learn more about Next.js, take a look at the following resources:
+## Configuration
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The app is configured to serve ML assets from the `/imgly/` public path to ensure compatibility with Next.js bundlers (Webpack/Turbopack).
